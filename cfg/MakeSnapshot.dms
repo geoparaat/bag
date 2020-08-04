@@ -23,10 +23,29 @@
 
 container BAG_MakeSnapshot
 {
-	parameter<string> FSSDir          := '%SourceDataDir%/BAG/20200209/fss';
+	parameter<string> FSSDir          := '%SourceDataDir%/BAG/20200715/fss';
 	parameter<string> SnapshotBaseDir := '%SourceDataDir%/BAG/snapshots.ext';
 
-	container snapshot_date_nl_alle_statussen_20200101 := MakeSnapshot(20200101[eenheden/datum], False ,False , False);
+	container snapshot_date_nl_status_selectie_zonder_hoogte_20120101 := MakeSnapshot(20120101[eenheden/datum], False ,True , False);
+	container snapshot_date_nl_status_selectie_zonder_hoogte_20160101 := MakeSnapshot(20160101[eenheden/datum], False ,True , False);
+	container snapshot_date_nl_status_selectie_zonder_hoogte_20180101 := MakeSnapshot(20180101[eenheden/datum], False ,True , False);
+	container snapshot_date_nl_status_selectie_zonder_hoogte_20190701 := MakeSnapshot(20190701[eenheden/datum], False ,True , False);
+
+	container snapshot_date_zh_zonder_hoogte_20180101     := MakeSnapshot(20180101[eenheden/datum], False ,False , False);
+	container snapshot_date_geosel_zonder_hoogte_20170101 := MakeSnapshot(20170701[eenheden/datum], True ,False , False);
+
+//	container snapshot_date_kl_met_hoogte_20190101 := MakeSnapshot(20190101[eenheden/datum],True ,True ,True);
+	container snapshot_date_leiden_met_hoogte_20200101 := MakeSnapshot(20200101[eenheden/datum],True ,True ,True);
+	container snapshot_date_schiedam_met_hoogte_20200101 := MakeSnapshot(20200101[eenheden/datum],True ,True ,True);
+
+	container snapshot_date_gooiNH_met_hoogte_20200101 := MakeSnapshot(20200101[eenheden/datum],True ,True ,True);
+
+	container snapshot_date_lansingerland_met_hoogte_20190701 := MakeSnapshot(20190701[eenheden/datum],True ,True ,True);
+	container snapshot_date_kl_met_hoogte_20200101 := MakeSnapshot(20200101[eenheden/datum],True ,True ,True);
+
+	container snapshot_date_nl_alle_statussen_zonder_hoogte_20200101_geoparaat := MakeSnapshot(20200101[eenheden/datum], False ,False , False);
+	container snapshot_date_nl_alle_statussen_zonder_hoogte_20200401_geoparaat := MakeSnapshot(20200401[eenheden/datum], False ,False , False);
+	container snapshot_date_nl_alle_statussen_zonder_hoogte_20200701_geoparaat := MakeSnapshot(20200701[eenheden/datum], False ,False , False);
 
 	container eenheden
 	{
@@ -70,11 +89,15 @@ container BAG_MakeSnapshot
 // 	}
 
 	// Voorbeeld voor het lezen van een geo_selectie uit een shape file
-	:	StorageName     = "%LocalDataDir%/Leiden/website/gemeente.shp"
+	//:	StorageName     = "%LocalDataDir%/Lansingerland/website/gemeente.shp"
+	//:	StorageName     = "%LocalDataDir%/kennemerland/website/gemeente.shp"
+	//:	StorageName     = "%LocalDataDir%/Leiden/website/gemeente.shp"
+	//	StorageName     = "%SourceDataDir%/GooiNH/gem.shp"
+	:	StorageName     = "%LocalDataDir%/WoonZorgWijzerWebData/GM0606/2018/woonplaats.shp"
 	,	StorageType     = "gdal.vect"
 	,	StorageReadOnly = "True"
 	{
-		parameter<string>         Label := 'Leiden';
+		parameter<string>         Label := 'Schiedam';
 		attribute<geometries/rdc> geometry (poly);
 	}
 

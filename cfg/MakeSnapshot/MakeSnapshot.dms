@@ -208,6 +208,15 @@ template MakeSnapshot
 				attribute<afleidingen/pand_attributen/geometrie/type_woonpand> WOONPAND_TYPE         := afleidingen/pand_attributen/geometrie/results/type_woonpand_rel;
 
 				container meta := meta_template(selectie, unique);
+				
+				container gebruiksdoelen:=
+					for_each_nedv(
+						'nr_'+ typeringen/gebruiksdoel_vbo/name
+						, 'sum(vbo/results/unique/gebruiksdoelen/' + typeringen/gebruiksdoel_vbo/name + ' ? 1 : 0 , vbo/results/unique/pand_rel)'
+						, unique
+						, uint32
+					);
+
 			}
 			unit<uint32> phn := unique
 			,	StorageName = "= SnapshotDir + '/pand.fss'"

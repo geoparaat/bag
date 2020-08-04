@@ -217,6 +217,23 @@ container afleidingen: Using = "eenheden"
 
 		attribute<string>            woonplaatsnaam      := woonplaats/results/unique/woonplaatsNaam[point_in_polygon(geometry_mm,woonplaats/results/unique/geometry_mm)];
 	}
+	unit<uint32> adres_waalwijk := Subset(lowercase(adres/woonplaatsnaam) == 'waalwijk')
+	{
+		attribute<string>            nummeraanduiding_id := adres/nummeraanduiding_id[nr_OrgEntity];
+		attribute<string>            straatnaam          := adres/straatnaam[nr_OrgEntity];
+		attribute<string>            postcode            := adres/postcode[nr_OrgEntity];
+		attribute<int32>             huisnummer          := adres/huisnummer[nr_OrgEntity];
+		attribute<string>            huisletter          := adres/huisletter[nr_OrgEntity];
+		attribute<string>            toevoeging          := adres/toevoeging[nr_OrgEntity];
+
+		attribute<geometries/rdc_mm> geometry_mm         := adres/geometry_mm[nr_OrgEntity];
+		attribute<geometries/rdc>    geometry            := adres/geometry[nr_OrgEntity];
+		attribute<float32>           X                   := adres/X[nr_OrgEntity];
+		attribute<float32>           Y                   := adres/Y[nr_OrgEntity];
+
+		attribute<string>            woonplaatsnaam      := adres/woonplaatsnaam[nr_OrgEntity];
+	}
+
 	container impl
 	{
 		unit<uint32> inAmstelveen := Subset(left(adres/nummeraanduiding_id,4) ==  '0362')

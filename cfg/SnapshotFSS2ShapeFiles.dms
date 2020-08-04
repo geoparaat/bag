@@ -14,7 +14,7 @@
 
 container SnapshotFSS2ShapeFiles
 {
-	parameter<string> SnapshotFSSDir     := '%SourceDataDir%/BAG/snapshots.ext/20200101';
+	parameter<string> SnapshotFSSDir     := '%SourceDataDir%/BAG/snapshots.ext/20200701';
 	parameter<string> ResultShapeFileDir := '%LocalDataDir%/BAG_shapes/' + right(SnapshotFSSDir, 8);
 
 	container eenheden
@@ -171,6 +171,21 @@ container SnapshotFSS2ShapeFiles
 				attribute<bool>           IS_INACTIEF;
 				attribute<bool>           IS_OFFICIEEL;
 			}
+
+			unit<uint32> gebruiksdoelen := .
+			{
+				attribute<uint32> nr_bijeenkomst;
+				attribute<uint32> nr_cel;
+				attribute<uint32> nr_gezondheidszorg;
+				attribute<uint32> nr_industrie;
+				attribute<uint32> nr_kantoor;
+				attribute<uint32> nr_logies;
+				attribute<uint32> nr_onderwijs;
+				attribute<uint32> nr_overige_gebruiks;
+				attribute<uint32> nr_sport;
+				attribute<uint32> nr_winkel;
+				attribute<uint32> nr_woon;
+			}
 		}
 
 		unit<uint32> status := unique(fss/meta/status), StorageName= "= ResultShapeFileDir + '/pand_status_code.dbf'"
@@ -205,6 +220,18 @@ container SnapshotFSS2ShapeFiles
 			attribute<bool>           IS_COR     := fss/meta/IS_CORRECTIE;
 			attribute<bool>           IS_INA     := fss/meta/IS_INACTIEF;
 			attribute<bool>           IS_OFF     := fss/meta/IS_OFFICIEEL;
+
+			attribute<uint32>         NR_BIJEEN  := fss/gebruiksdoelen/nr_bijeenkomst;
+			attribute<uint32>         NR_CEL     := fss/gebruiksdoelen/nr_cel;
+			attribute<uint32>         NR_GEZOND  := fss/gebruiksdoelen/nr_gezondheidszorg;
+			attribute<uint32>         NR_INDUST  := fss/gebruiksdoelen/nr_industrie;
+			attribute<uint32>         NR_KANTOOR := fss/gebruiksdoelen/nr_kantoor;
+			attribute<uint32>         NR_LOGIES  := fss/gebruiksdoelen/nr_logies;
+			attribute<uint32>         NR_ONDERW  := fss/gebruiksdoelen/nr_onderwijs;
+			attribute<uint32>         NR_OVERIG  := fss/gebruiksdoelen/nr_overige_gebruiks;
+			attribute<uint32>         NR_SPORT   := fss/gebruiksdoelen/nr_sport;
+			attribute<uint32>         NR_WINKEL  := fss/gebruiksdoelen/nr_winkel;
+			attribute<uint32>         NR_WOON    := fss/gebruiksdoelen/nr_woon;
 		}
 	}
 
