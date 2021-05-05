@@ -2,7 +2,7 @@
 
 De volgende stappen zijn nodig om zelf een GeoPackage te genereren:
 
-1) Installeer een GeoDMS versie 7.202 of recenter via http://wiki.objectvision.nl/index.php/GeoDms_Setups
+1) Installeer een GeoDMS versie 7.202 of recenter via https://www.geodms.nl/GeoDms_Setups
 
 2) Installeer de tool: ogr2org bijvoorbeeld via: https://live.osgeo.org/en/download.html
 
