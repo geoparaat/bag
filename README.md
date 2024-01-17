@@ -2,18 +2,18 @@
 
 De volgende stappen zijn nodig om zelf een GeoPackage te genereren:
 
-1) Installeer een GeoDMS versie 7.202 of recenter via https://www.geodms.nl/GeoDms_Setups
+1) Installeer een GeoDMS versie 7.202 of recenter via https://github.com/ObjectVision/GeoDMS/releases.
 
 2) Installeer de tool: ogr2org bijvoorbeeld via: https://live.osgeo.org/en/download.html
 
 3) Download or clone the scripts van: https://github.com/geoparaat/bag
 
-4) Download de BAG van: http://geodata.nationaalgeoregister.nl/inspireadressen/atom/inspireadressen.xml. Gebruik het script: cfg/Xml2FSS.dms om hiervan een FSS database te maken,
-zie de beschrijving op: http://www.objectvision.nl/geodms/projects/bag-toolkit/bag-xml-2-fss.
+4) Download de BAG van: https://www.kadaster.nl/-/kosteloze-download-bag-2-0-extract. Gebruik het script: cfg/Xml2FSS.dms om hiervan een FSS database te maken,
+zie de beschrijving op: https://github.com/ObjectVision/BAG-Tools/wiki/BAG20-Xml2FSS.
 Afhankelijk van de machine zal dit tussen de 30 en 60 minuten duren.
 
 5) Maak een snapshot van de BAG voor de gewenste datum, ruimtelijke selectie en status selectie, met het behulpd van het script: cfg/MakeSnapshot.dms.
-Zie de beschrijving op http://www.objectvision.nl/geodms/projects/bag-toolkit/make-snapshot voor hoe een snapshot te maken.
+Zie de beschrijving op https://github.com/ObjectVision/BAG-Tools/wiki/BAG20-MakeSnapshot voor hoe een snapshot te maken.
 Afhankelijk van de machine en de omvavng van de snapshot zal dit tussen de 5 en 60 minuten duren.
 
 6) Pas nu bovenin het script: cfg/SnapshotFSS2ShapeFiles.dms, de volgende regel aan:
